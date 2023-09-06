@@ -1,0 +1,2 @@
+[plugins]
+python-test = "source:target/wasm32-wasi/debug/python_plugin.wasm"
