@@ -74,7 +74,7 @@ pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBi
     let mut bin_path = format_bin_name("install/bin/python3", env.os);
     let mut globals_lookup_dirs = vec!["$HOME/.local/bin".to_owned()];
 
-    // Only available for pre-builts
+    // Manifest is only available for pre-builts
     let manifest_path = input.context.tool_dir.join("PYTHON.json");
 
     if manifest_path.exists() {
@@ -83,7 +83,7 @@ pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBi
         bin_path = manifest.python_exe;
 
         if env.os == HostOS::Windows {
-            let formatted_version = manifest.python_major_minor_version.replace(".", "");
+            let formatted_version = manifest.python_major_minor_version.replace('.', "");
 
             globals_lookup_dirs.push(format!(
                 "$APPDATA/Roaming/Python{}/Scripts",
