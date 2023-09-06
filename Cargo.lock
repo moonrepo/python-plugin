@@ -2021,6 +2021,8 @@ dependencies = [
 [[package]]
 name = "proto_core"
 version = "0.16.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "13a58df3e529b4c61e437c3f5041c35e4e922eccdea8b54775383d90d09aa3a7"
 dependencies = [
  "cached",
  "extism",
@@ -2048,6 +2050,8 @@ dependencies = [
 [[package]]
 name = "proto_pdk"
 version = "0.6.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2a5e20d9949449269eaef10ecc2b05f3bdf6397939084d6d6f0574f979fc1340"
 dependencies = [
  "anyhow",
  "extism-pdk",
@@ -2060,6 +2064,8 @@ dependencies = [
 [[package]]
 name = "proto_pdk_api"
 version = "0.6.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "20f1e58f726b5e8c8c92c567f682bdbb2b44f859a108d852a5bdcc94f8fd3452"
 dependencies = [
  "anyhow",
  "semver",
@@ -2072,6 +2078,8 @@ dependencies = [
 [[package]]
 name = "proto_pdk_test_utils"
 version = "0.5.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6cc13d5b46cc92bee69b74784dace83279efabc30af330b13a18d05a3555b0f8"
 dependencies = [
  "extism",
  "proto_core",
@@ -2083,6 +2091,8 @@ dependencies = [
 [[package]]
 name = "proto_wasm_plugin"
 version = "0.6.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "31b644d1fe65ce5412cd6599a38ddc685b82a3f71a1b0254f8cded2dec52c11e"
 dependencies = [
  "extism",
  "proto_pdk_api",
@@ -2641,14 +2651,13 @@ dependencies = [
  "tracing",
  "xz2",
  "zip",
- "zstd 0.12.4",
 ]
 
 [[package]]
 name = "starbase_sandbox"
-version = "0.1.8"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e03cea8d1fd34d42fc47979aa670e28f276f395c70a6e446b6e68c8136dd2ae2"
+checksum = "8715fbb4e5ea309784161fddca9b5abfc2425ad079ef624c1fc01c8eea8f7163"
 dependencies = [
  "assert_cmd",
  "assert_fs",
@@ -3160,6 +3169,8 @@ dependencies = [
 [[package]]
 name = "warpgate"
 version = "0.5.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1ef3766f024730109e7479aab34a33ca7cddba42c867ae282b9722210e17ee0a"
 dependencies = [
  "extism",
  "miette",
@@ -3181,6 +3192,8 @@ dependencies = [
 [[package]]
 name = "warpgate_api"
 version = "0.1.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c87f4f62fa42fa715ce697387b4c5c66ae0380723b841b1e0ff9fd285c78ab5f"
 dependencies = [
  "serde",
 ]
@@ -3419,7 +3432,7 @@ dependencies = [
  "sha2",
  "toml 0.5.11",
  "windows-sys 0.48.0",
- "zstd 0.11.2+zstd.1.5.2",
+ "zstd",
 ]
 
 [[package]]
@@ -4081,16 +4094,7 @@ version = "0.11.2+zstd.1.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "20cc960326ece64f010d2d2107537f26dc589a6573a316bd5b1dba685fa5fde4"
 dependencies = [
- "zstd-safe 5.0.2+zstd.1.5.2",
-]
-
-[[package]]
-name = "zstd"
-version = "0.12.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1a27595e173641171fc74a1232b7b1c7a7cb6e18222c11e9dfb9888fa424c53c"
-dependencies = [
- "zstd-safe 6.0.6",
+ "zstd-safe",
 ]
 
 [[package]]
@@ -4098,16 +4102,6 @@ name = "zstd-safe"
 version = "5.0.2+zstd.1.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1d2a5585e04f9eea4b2a3d1eca508c4dee9592a89ef6f450c11719da0726f4db"
-dependencies = [
- "libc",
- "zstd-sys",
-]
-
-[[package]]
-name = "zstd-safe"
-version = "6.0.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ee98ffd0b48ee95e6c5168188e44a54550b1564d9d530ee21d5f0eaed1069581"
 dependencies = [
  "libc",
  "zstd-sys",

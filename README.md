@@ -13,10 +13,10 @@ Building from source (with `python-build`), and supporting Python 2, will be sup
 Build the plugin:
 
 ```shell
-carpython build --target wasm32-wasi
+cargo build --target wasm32-wasi
 ```
 
-Test the plugin by running `proto` commands. Requires proto >= v0.12.
+Test the plugin by running `proto` commands. Requires proto >= v0.17.
 
 ```shell
 proto install python-test
