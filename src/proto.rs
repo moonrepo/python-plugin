@@ -8,6 +8,7 @@ use std::fs;
 #[host_fn]
 extern "ExtismHost" {
     fn exec_command(input: Json<ExecCommandInput>) -> Json<ExecCommandOutput>;
+    fn host_log(input: Json<HostLogInput>);
 }
 
 static NAME: &str = "Python";
@@ -20,6 +21,34 @@ pub fn register_tool(Json(_): Json<ToolMetadataInput>) -> FnResult<Json<ToolMeta
         plugin_version: Some(env!("CARGO_PKG_VERSION").into()),
         ..ToolMetadataOutput::default()
     }))
+}
+
+#[plugin_fn]
+pub fn native_install(
+    Json(input): Json<NativeInstallInput>,
+) -> FnResult<Json<NativeInstallOutput>> {
+    let mut output = NativeInstallOutput::default();
+    let env = get_proto_environment()?;
+
+    // https://github.com/pyenv/pyenv/tree/master/plugins/python-build
+    if command_exists(&env, "python-build") {
+        host_log!("Building with `python-build` instead of downloading a pre-built");
+
+        let result = exec_command!(
+            inherit,
+            "python-build",
+            [
+                input.context.version.as_str(),
+                input.context.tool_dir.real_path().to_str().unwrap(),
+            ]
+        );
+
+        output.installed = result.exit_code == 0;
+    } else {
+        output.skip_install = true;
+    }
+
+    Ok(Json(output))
 }
 
 #[derive(Deserialize)]
@@ -39,19 +68,16 @@ pub fn download_prebuilt(
     )?;
 
     let Some(release_triples) = releases.get(&input.context.version) else {
-        return err!(format!(
+        return err!(
             "No pre-built available for version {}!",
             input.context.version
-        ));
+        );
     };
 
-    let triple = get_target_triple(&env, "Python")?;
+    let triple = get_target_triple(&env, NAME)?;
 
     let Some(release) = release_triples.get(&triple) else {
-        return err!(format!(
-            "No pre-built available for architecture {}!",
-            triple
-        ));
+        return err!("No pre-built available for architecture {}!", triple);
     };
 
     Ok(Json(DownloadPrebuiltOutput {

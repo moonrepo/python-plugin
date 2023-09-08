@@ -4,9 +4,9 @@
 
 ## Caveats
 
-This plugin only supports pre-builts via [indygreg/python-build-standalone](https://github.com/indygreg/python-build-standalone), and primarily only Python 3.
+If `python-build` exists on the host machine, this will be used to install python. Otherwise, a pre-built version will be downloaded from [indygreg/python-build-standalone](https://github.com/indygreg/python-build-standalone), which doesn't support all versions, only Python 3.
 
-Building from source (with `python-build`), and supporting Python 2, will be supported in the future.
+Building from source directly (with `python-build`), and supporting Python 2, will be fully supported in the future.
 
 ## Contributing
 
