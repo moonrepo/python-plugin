@@ -62,16 +62,18 @@ pub fn download_prebuilt(
     Json(input): Json<DownloadPrebuiltInput>,
 ) -> FnResult<Json<DownloadPrebuiltOutput>> {
     let env = get_proto_environment()?;
+    let version = input.context.version;
+
+    if version == "canary" {
+        return err!(PluginError::UnsupportedCanary { tool: NAME.into() }.into());
+    }
 
     let releases: HashMap<String, HashMap<String, ReleaseEntry>> = fetch_url_with_cache(
         "https://raw.githubusercontent.com/moonrepo/python-plugin/master/releases.json",
     )?;
 
-    let Some(release_triples) = releases.get(&input.context.version) else {
-        return err!(
-            "No pre-built available for version {}!",
-            input.context.version
-        );
+    let Some(release_triples) = releases.get(&version) else {
+        return err!("No pre-built available for version {}!", version);
     };
 
     let triple = get_target_triple(&env, NAME)?;
