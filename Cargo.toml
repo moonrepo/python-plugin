@@ -11,15 +11,15 @@ crate-type = ['cdylib']
 [dependencies]
 extism-pdk = "0.3.4"
 once_cell = "1.18.0"
-proto_pdk = { version = "0.6.5", path = "../../proto/crates/pdk" }
+proto_pdk = { version = "0.7.0" } # , path = "../../proto/crates/pdk" }
 regex = "1.9.5"
 serde = "1.0.188"
 
 [dev-dependencies]
-proto_pdk_test_utils = { version = "0.5.9", path = "../../proto/crates/pdk-test-utils" }
+proto_pdk_test_utils = { version = "0.6.1" } # , path = "../../proto/crates/pdk-test-utils" }
 starbase_sandbox = "0.1.10"
 tokio = "1.32.0"
 
 [profile.release]
+codegen-units = 1
 lto = true
-opt-level = "s"
