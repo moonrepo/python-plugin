@@ -14,7 +14,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.10.13%2B20230826-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.10.13%2B20230826-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.10.13%2B20230826-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.10.13%2B20230826-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -38,7 +38,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.10.13%2B20230826-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.10.13%2B20230826-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.10.13%2B20230826-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.11.5": {
@@ -56,7 +56,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.11.5%2B20230826-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.11.5%2B20230826-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.11.5%2B20230826-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.11.5%2B20230826-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -80,7 +80,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.11.5%2B20230826-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.11.5%2B20230826-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.11.5%2B20230826-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.8.17": {
@@ -132,7 +132,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.9.18%2B20230826-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.9.18%2B20230826-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.9.18%2B20230826-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.9.18%2B20230826-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -156,7 +156,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.9.18%2B20230826-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.9.18%2B20230826-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230826/cpython-3.9.18%2B20230826-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.10.12": {
@@ -174,7 +174,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -198,7 +198,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.10.12%2B20230726-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.11.4": {
@@ -216,7 +216,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -240,7 +240,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.11.4%2B20230726-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.8.16": {
@@ -292,7 +292,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -316,7 +316,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230726/cpython-3.9.17%2B20230726-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.10.11": {
@@ -334,7 +334,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.10.11%2B20230507-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.10.11%2B20230507-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.10.11%2B20230507-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.10.11%2B20230507-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -354,7 +354,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.10.11%2B20230507-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.10.11%2B20230507-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.10.11%2B20230507-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.11.3": {
@@ -372,7 +372,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.11.3%2B20230507-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.11.3%2B20230507-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.11.3%2B20230507-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.11.3%2B20230507-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -392,7 +392,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.11.3%2B20230507-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.11.3%2B20230507-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.11.3%2B20230507-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.9.16": {
@@ -410,7 +410,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.9.16%2B20230507-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221220/cpython-3.9.16%2B20221220-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221220/cpython-3.9.16%2B20221220-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.9.16%2B20230507-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -430,7 +430,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.9.16%2B20230507-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221220/cpython-3.9.16%2B20221220-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221220/cpython-3.9.16%2B20221220-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.10.9": {
@@ -448,7 +448,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230116/cpython-3.10.9%2B20230116-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221220/cpython-3.10.9%2B20221220-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221220/cpython-3.10.9%2B20221220-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230116/cpython-3.10.9%2B20230116-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -464,7 +464,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230116/cpython-3.10.9%2B20230116-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221220/cpython-3.10.9%2B20221220-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221220/cpython-3.10.9%2B20221220-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.11.1": {
@@ -482,7 +482,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230116/cpython-3.11.1%2B20230116-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230116/cpython-3.11.1%2B20230116-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230116/cpython-3.11.1%2B20230116-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230116/cpython-3.11.1%2B20230116-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -498,7 +498,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20230116/cpython-3.11.1%2B20230116-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230116/cpython-3.11.1%2B20230116-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20230116/cpython-3.11.1%2B20230116-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.10.8": {
@@ -516,7 +516,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.10.8%2B20221106-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.10.8%2B20221106-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.10.8%2B20221106-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.10.8%2B20221106-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -532,7 +532,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.10.8%2B20221106-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.10.8%2B20221106-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.10.8%2B20221106-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.8.15": {
@@ -584,7 +584,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.9.15%2B20221106-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.9.15%2B20221106-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.9.15%2B20221106-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.9.15%2B20221106-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -600,7 +600,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.9.15%2B20221106-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.9.15%2B20221106-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221106/cpython-3.9.15%2B20221106-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.10.7": {
@@ -618,7 +618,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.10.7%2B20221002-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.10.7%2B20221002-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.10.7%2B20221002-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.10.7%2B20221002-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -634,7 +634,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.10.7%2B20221002-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.10.7%2B20221002-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.10.7%2B20221002-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.8.14": {
@@ -686,7 +686,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.9.14%2B20221002-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.9.14%2B20221002-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.9.14%2B20221002-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.9.14%2B20221002-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -702,7 +702,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.9.14%2B20221002-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.9.14%2B20221002-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20221002/cpython-3.9.14%2B20221002-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.10.6": {
@@ -720,7 +720,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220802/cpython-3.10.6%2B20220802-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220802/cpython-3.10.6%2B20220802-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220802/cpython-3.10.6%2B20220802-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220802/cpython-3.10.6%2B20220802-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -736,7 +736,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220802/cpython-3.10.6%2B20220802-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220802/cpython-3.10.6%2B20220802-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220802/cpython-3.10.6%2B20220802-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.8.13": {
@@ -788,7 +788,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220802/cpython-3.9.13%2B20220802-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220528/cpython-3.9.13%2B20220528-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220528/cpython-3.9.13%2B20220528-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220802/cpython-3.9.13%2B20220802-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -804,7 +804,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220802/cpython-3.9.13%2B20220802-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220528/cpython-3.9.13%2B20220528-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220528/cpython-3.9.13%2B20220528-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.10.5": {
@@ -822,7 +822,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220630/cpython-3.10.5%2B20220630-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220630/cpython-3.10.5%2B20220630-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220630/cpython-3.10.5%2B20220630-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220630/cpython-3.10.5%2B20220630-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -838,7 +838,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220630/cpython-3.10.5%2B20220630-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220630/cpython-3.10.5%2B20220630-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220630/cpython-3.10.5%2B20220630-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.10.4": {
@@ -856,7 +856,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220528/cpython-3.10.4%2B20220528-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220502/cpython-3.10.4%2B20220502-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220502/cpython-3.10.4%2B20220502-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220528/cpython-3.10.4%2B20220528-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -872,7 +872,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220528/cpython-3.10.4%2B20220528-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220502/cpython-3.10.4%2B20220502-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220502/cpython-3.10.4%2B20220502-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.9.12": {
@@ -890,7 +890,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220502/cpython-3.9.12%2B20220502-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220502/cpython-3.9.12%2B20220502-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220502/cpython-3.9.12%2B20220502-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220502/cpython-3.9.12%2B20220502-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -906,7 +906,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220502/cpython-3.9.12%2B20220502-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220502/cpython-3.9.12%2B20220502-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220502/cpython-3.9.12%2B20220502-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.10.3": {
@@ -924,7 +924,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.10.3%2B20220318-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.10.3%2B20220318-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.10.3%2B20220318-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.10.3%2B20220318-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -940,7 +940,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.10.3%2B20220318-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.10.3%2B20220318-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.10.3%2B20220318-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.9.11": {
@@ -958,7 +958,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.9.11%2B20220318-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.9.11%2B20220318-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.9.11%2B20220318-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.9.11%2B20220318-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -974,7 +974,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.9.11%2B20220318-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.9.11%2B20220318-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220318/cpython-3.9.11%2B20220318-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.10.2": {
@@ -992,7 +992,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.10.2%2B20220227-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.10.2%2B20220227-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.10.2%2B20220227-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.10.2%2B20220227-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -1008,7 +1008,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.10.2%2B20220227-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.10.2%2B20220227-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.10.2%2B20220227-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.8.12": {
@@ -1056,7 +1056,7 @@
     },
     "x86_64-unknown-linux-gnu": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.9.10%2B20220227-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.9.10%2B20220227-x86_64_v4-unknown-linux-gnu-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.9.10%2B20220227-x86_64-unknown-linux-gnu-pgo%2Blto-full.tar.zst.sha256"
     },
     "i686-pc-windows-msvc": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.9.10%2B20220227-i686-pc-windows-msvc-shared-pgo-full.tar.zst",
@@ -1072,7 +1072,7 @@
     },
     "x86_64-unknown-linux-musl": {
       "download": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.9.10%2B20220227-x86_64-unknown-linux-musl-lto-full.tar.zst",
-      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.9.10%2B20220227-x86_64_v4-unknown-linux-musl-lto-full.tar.zst.sha256"
+      "checksum": "https://github.com/indygreg/python-build-standalone/releases/download/20220227/cpython-3.9.10%2B20220227-x86_64-unknown-linux-musl-lto-full.tar.zst.sha256"
     }
   },
   "3.10.0": {

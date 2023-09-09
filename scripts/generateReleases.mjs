@@ -131,13 +131,19 @@ function processAssets(assets, releaseName, optLevel) {
   });
 }
 
+const FILTER_WORDS = [
+  "debug",
+  "install_only",
+  "msvc-static",
+  "_v2-",
+  "_v3-",
+  "_v4-",
+];
+
 releases.forEach((release) => {
   // Remove debug, install only, and unwanted builds
-  const assets = release.assets.filter(
-    (asset) =>
-      !asset.name.includes("debug") &&
-      !asset.name.includes("install_only") &&
-      !asset.name.includes("msvc-static")
+  const assets = release.assets.filter((asset) =>
+    FILTER_WORDS.every((word) => !asset.name.includes(word))
   );
 
   // Process assets in order of most wanted to least wanted
