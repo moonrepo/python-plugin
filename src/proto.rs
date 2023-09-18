@@ -135,7 +135,7 @@ pub fn load_versions(Json(_): Json<LoadVersionsInput>) -> FnResult<Json<LoadVers
     let tags = load_git_tags("https://github.com/python/cpython")?;
     let tags = tags
         .into_iter()
-        .filter(|t| !t.ends_with("^{}") && t != "legacy-trunk")
+        .filter(|t| t != "legacy-trunk")
         .filter_map(from_python_version)
         .collect::<Vec<_>>();
 
