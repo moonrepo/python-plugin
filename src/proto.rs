@@ -39,7 +39,7 @@ pub fn native_install(
             "python-build",
             [
                 input.context.version.as_str(),
-                input.context.tool_dir.real_path().to_str().unwrap(),
+                input.install_dir.real_path().to_str().unwrap(),
             ]
         );
 
