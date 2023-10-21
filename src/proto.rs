@@ -68,9 +68,8 @@ pub fn download_prebuilt(
         return err!(PluginError::UnsupportedCanary { tool: NAME.into() }.into());
     }
 
-    let releases: HashMap<String, HashMap<String, ReleaseEntry>> = fetch_url_with_cache(
-        "https://raw.githubusercontent.com/moonrepo/python-plugin/master/releases.json",
-    )?;
+    let releases: HashMap<String, HashMap<String, ReleaseEntry>> =
+        fetch_url("https://raw.githubusercontent.com/moonrepo/python-plugin/master/releases.json")?;
 
     let Some(release_triples) = releases.get(&version) else {
         return err!("No pre-built available for version {}!", version);
