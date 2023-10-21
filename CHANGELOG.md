@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+#### ⚙️ Internal
+
+- Temporarily disabling `python-build` functionality.
+
 ## 0.1.1
 
 #### 🐞 Fixes

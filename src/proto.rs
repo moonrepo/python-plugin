@@ -23,33 +23,33 @@ pub fn register_tool(Json(_): Json<ToolMetadataInput>) -> FnResult<Json<ToolMeta
     }))
 }
 
-#[plugin_fn]
-pub fn native_install(
-    Json(input): Json<NativeInstallInput>,
-) -> FnResult<Json<NativeInstallOutput>> {
-    let mut output = NativeInstallOutput::default();
-    let env = get_proto_environment()?;
+// #[plugin_fn]
+// pub fn native_install(
+//     Json(input): Json<NativeInstallInput>,
+// ) -> FnResult<Json<NativeInstallOutput>> {
+//     let mut output = NativeInstallOutput::default();
+//     let env = get_proto_environment()?;
 
-    // https://github.com/pyenv/pyenv/tree/master/plugins/python-build
-    if command_exists(&env, "python-build") {
-        host_log!("Building with `python-build` instead of downloading a pre-built");
+//     // https://github.com/pyenv/pyenv/tree/master/plugins/python-build
+//     if command_exists(&env, "python-build") {
+//         host_log!("Building with `python-build` instead of downloading a pre-built");
 
-        let result = exec_command!(
-            inherit,
-            "python-build",
-            [
-                input.context.version.as_str(),
-                input.install_dir.real_path().to_str().unwrap(),
-            ]
-        );
+//         let result = exec_command!(
+//             inherit,
+//             "python-build",
+//             [
+//                 input.context.version.as_str(),
+//                 input.install_dir.real_path().to_str().unwrap(),
+//             ]
+//         );
 
-        output.installed = result.exit_code == 0;
-    } else {
-        output.skip_install = true;
-    }
+//         output.installed = result.exit_code == 0;
+//     } else {
+//         output.skip_install = true;
+//     }
 
-    Ok(Json(output))
-}
+//     Ok(Json(output))
+// }
 
 #[derive(Deserialize)]
 struct ReleaseEntry {
