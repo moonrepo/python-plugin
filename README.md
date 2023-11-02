@@ -4,7 +4,7 @@
 
 ## Caveats
 
-If `python-build` exists on the host machine, this will be used to install python. Otherwise, a pre-built version will be downloaded from [indygreg/python-build-standalone](https://github.com/indygreg/python-build-standalone), which doesn't support all versions, only Python 3.
+This will install a pre-built version from [indygreg/python-build-standalone](https://github.com/indygreg/python-build-standalone), which doesn't support all versions, only Python 3.
 
 Building from source directly (with `python-build`), and supporting Python 2, will be fully supported in the future.
 
