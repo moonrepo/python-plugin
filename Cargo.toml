@@ -10,9 +10,8 @@ crate-type = ['cdylib']
 
 [dependencies]
 extism-pdk = "0.3.4"
-once_cell = "1.18.0"
-proto_pdk = { version = "0.9.0" } # , path = "../../proto/crates/pdk" }
-regex = "1.10.2"
+proto_pdk = { version = "0.9.0" }                                            # , path = "../../proto/crates/pdk" }
+regex = { version = "1.10.2", default-features = false, features = ["std"] }
 serde = "1.0.190"
 
 [dev-dependencies]

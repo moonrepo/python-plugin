@@ -2111,7 +2111,6 @@ name = "python_plugin"
 version = "0.1.2"
 dependencies = [
  "extism-pdk",
- "once_cell",
  "proto_pdk",
  "proto_pdk_test_utils",
  "regex",
