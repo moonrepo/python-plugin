@@ -2,7 +2,7 @@ use crate::version::from_python_version;
 use extism_pdk::*;
 use proto_pdk::*;
 use serde::Deserialize;
-use std::collections::HashMap;
+use std::collections::{BTreeMap, HashMap};
 use std::fs;
 
 #[host_fn]
@@ -62,16 +62,21 @@ pub fn download_prebuilt(
     Json(input): Json<DownloadPrebuiltInput>,
 ) -> FnResult<Json<DownloadPrebuiltOutput>> {
     let env = get_proto_environment()?;
-    let version = input.context.version;
+    let version = &input.context.version;
 
-    if version == "canary" {
+    if version.is_canary() {
         return err!(PluginError::UnsupportedCanary { tool: NAME.into() }.into());
     }
 
-    let releases: HashMap<String, HashMap<String, ReleaseEntry>> =
+    let releases: BTreeMap<Version, BTreeMap<String, ReleaseEntry>> =
         fetch_url("https://raw.githubusercontent.com/moonrepo/python-plugin/master/releases.json")?;
 
-    let Some(release_triples) = releases.get(&version) else {
+    let release_triples = match version {
+        VersionSpec::Version(v) => releases.get(v),
+        _ => None,
+    };
+
+    let Some(release_triples) = release_triples else {
         return err!("No pre-built available for version {}!", version);
     };
 
@@ -132,6 +137,7 @@ pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBi
 #[plugin_fn]
 pub fn load_versions(Json(_): Json<LoadVersionsInput>) -> FnResult<Json<LoadVersionsOutput>> {
     let tags = load_git_tags("https://github.com/python/cpython")?;
+
     let tags = tags
         .into_iter()
         .filter(|t| t != "legacy-trunk")
