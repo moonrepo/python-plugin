@@ -14,6 +14,12 @@ extern "ExtismHost" {
 
 static NAME: &str = "Python";
 
+#[derive(Deserialize)]
+struct PythonManifest {
+    python_exe: String,
+    python_major_minor_version: String,
+}
+
 #[plugin_fn]
 pub fn register_tool(Json(_): Json<ToolMetadataInput>) -> FnResult<Json<ToolMetadataOutput>> {
     Ok(Json(ToolMetadataOutput {
@@ -22,6 +28,30 @@ pub fn register_tool(Json(_): Json<ToolMetadataInput>) -> FnResult<Json<ToolMeta
         plugin_version: Some(env!("CARGO_PKG_VERSION").into()),
         ..ToolMetadataOutput::default()
     }))
+}
+
+#[plugin_fn]
+pub fn detect_version_files(_: ()) -> FnResult<Json<DetectVersionOutput>> {
+    Ok(Json(DetectVersionOutput {
+        files: vec![".python-version".into()],
+    }))
+}
+
+#[plugin_fn]
+pub fn load_versions(Json(_): Json<LoadVersionsInput>) -> FnResult<Json<LoadVersionsOutput>> {
+    let tags = load_git_tags("https://github.com/python/cpython")?;
+    let regex = Regex::new(
+        r"v?(?<major>[0-9]+)\.(?<minor>[0-9]+)(?:\.(?<patch>[0-9]+))?(?:(?<pre>a|b|c|rc)(?<preid>[0-9]+))?",
+    )
+    .unwrap();
+
+    let tags = tags
+        .into_iter()
+        .filter(|t| t != "legacy-trunk")
+        .filter_map(|t| from_python_version(t, &regex))
+        .collect::<Vec<_>>();
+
+    Ok(Json(LoadVersionsOutput::from(tags)?))
 }
 
 // #[plugin_fn]
@@ -95,11 +125,70 @@ pub fn download_prebuilt(
     }))
 }
 
-#[derive(Deserialize)]
-struct PythonManifest {
-    python_exe: String,
-    python_major_minor_version: String,
+#[plugin_fn]
+pub fn locate_executables(
+    Json(input): Json<LocateExecutablesInput>,
+) -> FnResult<Json<LocateExecutablesOutput>> {
+    let env = get_proto_environment()?;
+    let mut exe_path = format_bin_name("install/bin/python3", env.os);
+    let mut globals_lookup_dirs = vec!["$HOME/.local/bin".to_owned()];
+
+    // Manifest is only available for pre-builts
+    let manifest_path = input.context.tool_dir.join("PYTHON.json");
+
+    if manifest_path.exists() {
+        let manifest: PythonManifest = json::from_slice(&fs::read(manifest_path)?)?;
+        exe_path = manifest.python_exe;
+
+        if env.os == HostOS::Windows {
+            let formatted_version = manifest.python_major_minor_version.replace('.', "");
+
+            globals_lookup_dirs.push(format!(
+                "$APPDATA/Roaming/Python{}/Scripts",
+                formatted_version
+            ));
+            globals_lookup_dirs.push(format!("$APPDATA/Python{}/Scripts", formatted_version));
+        }
+    }
+
+    Ok(Json(LocateExecutablesOutput {
+        globals_lookup_dirs,
+        primary: Some(ExecutableConfig::new(exe_path)),
+        secondary: HashMap::from_iter([
+            // pip
+            (
+                "pip".into(),
+                ExecutableConfig {
+                    no_bin: true,
+                    shim_before_args: Some("-m pip".into()),
+                    ..ExecutableConfig::default()
+                },
+            ),
+        ]),
+        ..LocateExecutablesOutput::default()
+    }))
 }
+
+#[plugin_fn]
+pub fn install_global(
+    Json(input): Json<InstallGlobalInput>,
+) -> FnResult<Json<InstallGlobalOutput>> {
+    let result = exec_command!(inherit, "pip", ["install", "--user", &input.dependency]);
+
+    Ok(Json(InstallGlobalOutput::from_exec_command(result)))
+}
+
+#[plugin_fn]
+pub fn uninstall_global(
+    Json(input): Json<UninstallGlobalInput>,
+) -> FnResult<Json<UninstallGlobalOutput>> {
+    let result = exec_command!(inherit, "pip", ["uninstall", "--yes", &input.dependency]);
+
+    Ok(Json(UninstallGlobalOutput::from_exec_command(result)))
+}
+
+// DEPRECATED
+// Removed in v0.23!
 
 #[plugin_fn]
 pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBinsOutput>> {
@@ -136,30 +225,6 @@ pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBi
 }
 
 #[plugin_fn]
-pub fn load_versions(Json(_): Json<LoadVersionsInput>) -> FnResult<Json<LoadVersionsOutput>> {
-    let tags = load_git_tags("https://github.com/python/cpython")?;
-    let regex = Regex::new(
-        r"v?(?<major>[0-9]+)\.(?<minor>[0-9]+)(?:\.(?<patch>[0-9]+))?(?:(?<pre>a|b|c|rc)(?<preid>[0-9]+))?",
-    )
-    .unwrap();
-
-    let tags = tags
-        .into_iter()
-        .filter(|t| t != "legacy-trunk")
-        .filter_map(|t| from_python_version(t, &regex))
-        .collect::<Vec<_>>();
-
-    Ok(Json(LoadVersionsOutput::from(tags)?))
-}
-
-#[plugin_fn]
-pub fn detect_version_files(_: ()) -> FnResult<Json<DetectVersionOutput>> {
-    Ok(Json(DetectVersionOutput {
-        files: vec![".python-version".into()],
-    }))
-}
-
-#[plugin_fn]
 pub fn create_shims(Json(_): Json<CreateShimsInput>) -> FnResult<Json<CreateShimsOutput>> {
     let mut global_shims = HashMap::new();
 
@@ -169,22 +234,4 @@ pub fn create_shims(Json(_): Json<CreateShimsInput>) -> FnResult<Json<CreateShim
         global_shims,
         ..CreateShimsOutput::default()
     }))
-}
-
-#[plugin_fn]
-pub fn install_global(
-    Json(input): Json<InstallGlobalInput>,
-) -> FnResult<Json<InstallGlobalOutput>> {
-    let result = exec_command!(inherit, "pip", ["install", "--user", &input.dependency]);
-
-    Ok(Json(InstallGlobalOutput::from_exec_command(result)))
-}
-
-#[plugin_fn]
-pub fn uninstall_global(
-    Json(input): Json<UninstallGlobalInput>,
-) -> FnResult<Json<UninstallGlobalOutput>> {
-    let result = exec_command!(inherit, "pip", ["uninstall", "--yes", &input.dependency]);
-
-    Ok(Json(UninstallGlobalOutput::from_exec_command(result)))
 }
