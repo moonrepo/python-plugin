@@ -130,7 +130,7 @@ pub fn locate_executables(
     Json(input): Json<LocateExecutablesInput>,
 ) -> FnResult<Json<LocateExecutablesOutput>> {
     let env = get_proto_environment()?;
-    let mut exe_path = format_bin_name("install/bin/python3", env.os);
+    let mut exe_path = env.os.get_exe_name("install/bin/python3");
     let mut globals_lookup_dirs = vec!["$HOME/.local/bin".to_owned()];
 
     // Manifest is only available for pre-builts
@@ -193,7 +193,7 @@ pub fn uninstall_global(
 #[plugin_fn]
 pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBinsOutput>> {
     let env = get_proto_environment()?;
-    let mut bin_path = format_bin_name("install/bin/python3", env.os);
+    let mut bin_path = env.os.get_exe_name("install/bin/python3");
     let mut globals_lookup_dirs = vec!["$HOME/.local/bin".to_owned()];
 
     // Manifest is only available for pre-builts
