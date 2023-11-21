@@ -8,6 +8,10 @@ This will install a pre-built version from [indygreg/python-build-standalone](ht
 
 Building from source directly (with `python-build`), and supporting Python 2, will be fully supported in the future.
 
+### Global packages
+
+When globals are installed with `proto install-global python`, we install them using `pip --user`, which installs them to `~/.local/lib/pythonX.Y/site-packages` or `~/.local/bin` on Linux and macOS, and `~/AppData/Roaming/Python/PythonXY/Scripts` on Windows.
+
 ## Contributing
 
 Build the plugin:

@@ -2017,9 +2017,9 @@ dependencies = [
 
 [[package]]
 name = "proto_core"
-version = "0.22.3"
+version = "0.23.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1e9ecc7249957cbafbf7d48e4beb86948c1831fb0e37a2f9c1911106e6873f9a"
+checksum = "44b64578ff10a1a39d3a3d94e0725c0ecdc5858ec6c42844289530dd15981b22"
 dependencies = [
  "cached",
  "extism",
@@ -2076,9 +2076,9 @@ dependencies = [
 
 [[package]]
 name = "proto_pdk_test_utils"
-version = "0.10.2"
+version = "0.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "26c3bd0cd8863a8cac4a6a947a304d1c986dcb5be5af4236174b4bbaae14da57"
+checksum = "2e903c50774be861c179391305e68f529d758bb8255eb91c1c688c28c7d770bf"
 dependencies = [
  "extism",
  "proto_core",
@@ -2746,9 +2746,9 @@ dependencies = [
 
 [[package]]
 name = "starbase_utils"
-version = "0.3.7"
+version = "0.3.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d948dcd63f1dd11f2b7a9ab15c53e7866faa11ccd31377dca1625c106d40fcee"
+checksum = "9af464d976956393070880234f8d9f3509f04555266174abfd9b11386cdce4bc"
 dependencies = [
  "dirs 5.0.1",
  "fs4",
@@ -2762,7 +2762,7 @@ dependencies = [
  "starbase_styles",
  "thiserror",
  "tokio",
- "toml 0.8.6",
+ "toml 0.8.8",
  "tracing",
  "wax",
 ]
@@ -3068,14 +3068,14 @@ dependencies = [
 
 [[package]]
 name = "toml"
-version = "0.8.6"
+version = "0.8.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8ff9e3abce27ee2c9a37f9ad37238c1bdd4e789c84ba37df76aa4d528f5072cc"
+checksum = "a1a195ec8c9da26928f773888e0742ca3ca1040c6cd859c919c9f59c1954ab35"
 dependencies = [
  "serde",
  "serde_spanned",
  "toml_datetime",
- "toml_edit 0.20.7",
+ "toml_edit 0.21.0",
 ]
 
 [[package]]
@@ -3102,9 +3102,9 @@ dependencies = [
 
 [[package]]
 name = "toml_edit"
-version = "0.20.7"
+version = "0.21.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "70f427fce4d84c72b5b732388bf4a9f4531b53f74e2887e3ecb2481f68f66d81"
+checksum = "d34d383cd00a163b4a5b85053df514d45bc330f6de7737edfe0a93311d1eaa03"
 dependencies = [
  "indexmap 2.0.0",
  "serde",

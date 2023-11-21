@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.1
+
+#### 🐞 Fixes
+
+- Fixed an incorrect globals directory on Windows.
+
+#### ⚙️ Internal
+
+- Updated dependencies.
+
 ## 0.2.0
 
 #### 🚀 Updates

@@ -17,7 +17,7 @@ static NAME: &str = "Python";
 #[derive(Deserialize)]
 struct PythonManifest {
     python_exe: String,
-    python_major_minor_version: String,
+    // python_major_minor_version: String,
 }
 
 #[plugin_fn]
@@ -126,13 +126,53 @@ pub fn download_prebuilt(
     }))
 }
 
+// https://docs.python.org/2/library/site.html#site.USER_SITE
+fn get_globals_dirs(env: &HostEnvironment, spec: &VersionSpec) -> Vec<String> {
+    let mut dirs = vec![];
+
+    if let VersionSpec::Version(version) = spec {
+        // %APPDATA% == ~/AppData/Roaming
+        if env.os == HostOS::Windows {
+            let version_stamp = format!("{}{}", version.major, version.minor);
+
+            dirs.push(format!(
+                "$HOME/AppData/Roaming/Python/Python{}/site-packages",
+                version_stamp
+            ));
+            dirs.push(format!(
+                "$HOME/AppData/Roaming/Python/Python{}/Scripts",
+                version_stamp
+            ));
+        } else {
+            let version_dot_stamp = format!("{}.{}", version.major, version.minor);
+
+            if env.os == HostOS::MacOS {
+                dirs.push(format!(
+                    "$HOME/Library/Python/{}/lib/python/site-packages",
+                    version_dot_stamp
+                ));
+            }
+
+            dirs.push(format!(
+                "$HOME/.local/lib/python{}/site-packages",
+                version_dot_stamp
+            ));
+        }
+    }
+
+    if env.os != HostOS::Windows {
+        dirs.push("$HOME/.local/bin".to_owned());
+    }
+
+    dirs
+}
+
 #[plugin_fn]
 pub fn locate_executables(
     Json(input): Json<LocateExecutablesInput>,
 ) -> FnResult<Json<LocateExecutablesOutput>> {
     let env = get_proto_environment()?;
     let mut exe_path = env.os.get_exe_name("install/bin/python3");
-    let mut globals_lookup_dirs = vec![];
 
     // Manifest is only available for pre-builts
     let manifest_path = input.context.tool_dir.join("PYTHON.json");
@@ -141,24 +181,8 @@ pub fn locate_executables(
         exe_path = json::from_slice::<PythonManifest>(&fs::read(manifest_path)?)?.python_exe;
     }
 
-    // Windows places globals in versioned directories
-    if env.os == HostOS::Windows {
-        if let VersionSpec::Version(version) = &input.context.version {
-            globals_lookup_dirs.push(format!(
-                "$HOME/AppData/Python/Python{}{}/Scripts",
-                version.major, version.minor
-            ));
-            globals_lookup_dirs.push(format!(
-                "$HOME/AppData/Roaming/Python/Python{}{}/Scripts",
-                version.major, version.minor
-            ));
-        }
-    } else {
-        globals_lookup_dirs.push("$HOME/.local/bin".to_owned());
-    }
-
     Ok(Json(LocateExecutablesOutput {
-        globals_lookup_dirs,
+        globals_lookup_dirs: get_globals_dirs(&env, &input.context.version),
         primary: Some(ExecutableConfig::new(exe_path)),
         secondary: HashMap::from_iter([
             // pip
@@ -200,7 +224,6 @@ pub fn uninstall_global(
 pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBinsOutput>> {
     let env = get_proto_environment()?;
     let mut bin_path = env.os.get_exe_name("install/bin/python3");
-    let mut globals_lookup_dirs = vec![];
 
     // Manifest is only available for pre-builts
     let manifest_path = input.context.tool_dir.join("PYTHON.json");
@@ -211,26 +234,10 @@ pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBi
         bin_path = manifest.python_exe;
     }
 
-    // Windows places globals in versioned directories
-    if env.os == HostOS::Windows {
-        if let VersionSpec::Version(version) = &input.context.version {
-            globals_lookup_dirs.push(format!(
-                "$HOME/AppData/Python/Python{}{}/Scripts",
-                version.major, version.minor
-            ));
-            globals_lookup_dirs.push(format!(
-                "$HOME/AppData/Roaming/Python/Python{}{}/Scripts",
-                version.major, version.minor
-            ));
-        }
-    } else {
-        globals_lookup_dirs.push("$HOME/.local/bin".to_owned());
-    }
-
     Ok(Json(LocateBinsOutput {
         bin_path: Some(bin_path.into()),
         fallback_last_globals_dir: true,
-        globals_lookup_dirs,
+        globals_lookup_dirs: get_globals_dirs(&env, &input.context.version),
         ..LocateBinsOutput::default()
     }))
 }
