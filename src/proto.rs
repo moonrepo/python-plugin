@@ -34,6 +34,7 @@ pub fn register_tool(Json(_): Json<ToolMetadataInput>) -> FnResult<Json<ToolMeta
 pub fn detect_version_files(_: ()) -> FnResult<Json<DetectVersionOutput>> {
     Ok(Json(DetectVersionOutput {
         files: vec![".python-version".into()],
+        ignore: vec![],
     }))
 }
 
@@ -131,24 +132,29 @@ pub fn locate_executables(
 ) -> FnResult<Json<LocateExecutablesOutput>> {
     let env = get_proto_environment()?;
     let mut exe_path = env.os.get_exe_name("install/bin/python3");
-    let mut globals_lookup_dirs = vec!["$HOME/.local/bin".to_owned()];
+    let mut globals_lookup_dirs = vec![];
 
     // Manifest is only available for pre-builts
     let manifest_path = input.context.tool_dir.join("PYTHON.json");
 
     if manifest_path.exists() {
-        let manifest: PythonManifest = json::from_slice(&fs::read(manifest_path)?)?;
-        exe_path = manifest.python_exe;
+        exe_path = json::from_slice::<PythonManifest>(&fs::read(manifest_path)?)?.python_exe;
+    }
 
-        if env.os == HostOS::Windows {
-            let formatted_version = manifest.python_major_minor_version.replace('.', "");
-
+    // Windows places globals in versioned directories
+    if env.os == HostOS::Windows {
+        if let VersionSpec::Version(version) = &input.context.version {
             globals_lookup_dirs.push(format!(
-                "$APPDATA/Roaming/Python{}/Scripts",
-                formatted_version
+                "$HOME/AppData/Python/Python{}{}/Scripts",
+                version.major, version.minor
             ));
-            globals_lookup_dirs.push(format!("$APPDATA/Python{}/Scripts", formatted_version));
+            globals_lookup_dirs.push(format!(
+                "$HOME/AppData/Roaming/Python/Python{}{}/Scripts",
+                version.major, version.minor
+            ));
         }
+    } else {
+        globals_lookup_dirs.push("$HOME/.local/bin".to_owned());
     }
 
     Ok(Json(LocateExecutablesOutput {
@@ -194,7 +200,7 @@ pub fn uninstall_global(
 pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBinsOutput>> {
     let env = get_proto_environment()?;
     let mut bin_path = env.os.get_exe_name("install/bin/python3");
-    let mut globals_lookup_dirs = vec!["$HOME/.local/bin".to_owned()];
+    let mut globals_lookup_dirs = vec![];
 
     // Manifest is only available for pre-builts
     let manifest_path = input.context.tool_dir.join("PYTHON.json");
@@ -203,17 +209,22 @@ pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBi
         let manifest: PythonManifest = json::from_slice(&fs::read(manifest_path)?)?;
 
         bin_path = manifest.python_exe;
+    }
 
-        if env.os == HostOS::Windows {
-            let formatted_version = manifest.python_major_minor_version.replace('.', "");
-
+    // Windows places globals in versioned directories
+    if env.os == HostOS::Windows {
+        if let VersionSpec::Version(version) = &input.context.version {
             globals_lookup_dirs.push(format!(
-                "$APPDATA/Roaming/Python{}/Scripts",
-                formatted_version
+                "$HOME/AppData/Python/Python{}{}/Scripts",
+                version.major, version.minor
             ));
-
-            globals_lookup_dirs.push(format!("$APPDATA/Python{}/Scripts", formatted_version));
+            globals_lookup_dirs.push(format!(
+                "$HOME/AppData/Roaming/Python/Python{}{}/Scripts",
+                version.major, version.minor
+            ));
         }
+    } else {
+        globals_lookup_dirs.push("$HOME/.local/bin".to_owned());
     }
 
     Ok(Json(LocateBinsOutput {
