@@ -126,53 +126,13 @@ pub fn download_prebuilt(
     }))
 }
 
-// https://docs.python.org/2/library/site.html#site.USER_SITE
-fn get_globals_dirs(env: &HostEnvironment, spec: &VersionSpec) -> Vec<String> {
-    let mut dirs = vec![];
-
-    if let VersionSpec::Version(version) = spec {
-        // %APPDATA% == ~/AppData/Roaming
-        if env.os == HostOS::Windows {
-            let version_stamp = format!("{}{}", version.major, version.minor);
-
-            dirs.push(format!(
-                "$HOME/AppData/Roaming/Python/Python{}/site-packages",
-                version_stamp
-            ));
-            dirs.push(format!(
-                "$HOME/AppData/Roaming/Python/Python{}/Scripts",
-                version_stamp
-            ));
-        } else {
-            let version_dot_stamp = format!("{}.{}", version.major, version.minor);
-
-            if env.os == HostOS::MacOS {
-                dirs.push(format!(
-                    "$HOME/Library/Python/{}/lib/python/site-packages",
-                    version_dot_stamp
-                ));
-            }
-
-            dirs.push(format!(
-                "$HOME/.local/lib/python{}/site-packages",
-                version_dot_stamp
-            ));
-        }
-    }
-
-    if env.os != HostOS::Windows {
-        dirs.push("$HOME/.local/bin".to_owned());
-    }
-
-    dirs
-}
 
 #[plugin_fn]
 pub fn locate_executables(
     Json(input): Json<LocateExecutablesInput>,
 ) -> FnResult<Json<LocateExecutablesOutput>> {
     let env = get_proto_environment()?;
-    let mut exe_path = env.os.get_exe_name("install/bin/python3");
+    let mut exe_path = env.os.for_native("install/bin/python3", "install/python.exe").to_owned();
 
     // Manifest is only available for pre-builts
     let manifest_path = input.context.tool_dir.join("PYTHON.json");
@@ -182,7 +142,7 @@ pub fn locate_executables(
     }
 
     Ok(Json(LocateExecutablesOutput {
-        globals_lookup_dirs: get_globals_dirs(&env, &input.context.version),
+        globals_lookup_dirs: vec![env.os.for_native("$TOOL_DIR/install/bin", "$TOOL_DIR/install/Scripts").into()],
         primary: Some(ExecutableConfig::new(exe_path)),
         secondary: HashMap::from_iter([
             // pip
@@ -203,7 +163,7 @@ pub fn locate_executables(
 pub fn install_global(
     Json(input): Json<InstallGlobalInput>,
 ) -> FnResult<Json<InstallGlobalOutput>> {
-    let result = exec_command!(inherit, "pip", ["install", "--user", &input.dependency]);
+    let result = exec_command!(inherit, "pip", ["install", &input.dependency]);
 
     Ok(Json(InstallGlobalOutput::from_exec_command(result)))
 }
@@ -223,7 +183,7 @@ pub fn uninstall_global(
 #[plugin_fn]
 pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBinsOutput>> {
     let env = get_proto_environment()?;
-    let mut bin_path = env.os.get_exe_name("install/bin/python3");
+    let mut bin_path = env.os.for_native("install/bin/python3", "install/python.exe").to_owned();
 
     // Manifest is only available for pre-builts
     let manifest_path = input.context.tool_dir.join("PYTHON.json");
@@ -237,7 +197,7 @@ pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBi
     Ok(Json(LocateBinsOutput {
         bin_path: Some(bin_path.into()),
         fallback_last_globals_dir: true,
-        globals_lookup_dirs: get_globals_dirs(&env, &input.context.version),
+        globals_lookup_dirs: vec![env.os.for_native("$TOOL_DIR/install/bin", "$TOOL_DIR/install/Scripts").into()],
         ..LocateBinsOutput::default()
     }))
 }
