@@ -24,7 +24,7 @@ jobs:
           artifacts: builds/*
           artifactErrorsFailBuild: true
           name: ${{ github.ref_name }}
-          tag: release/${{ github.ref_name }}
+          tag: autorelease/${{ github.ref }}
           prerelease: >
             ${{ github.event_name != 'push'
             || github.ref_type != 'tag'
