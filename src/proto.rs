@@ -126,13 +126,15 @@ pub fn download_prebuilt(
     }))
 }
 
-
 #[plugin_fn]
 pub fn locate_executables(
     Json(input): Json<LocateExecutablesInput>,
 ) -> FnResult<Json<LocateExecutablesOutput>> {
     let env = get_proto_environment()?;
-    let mut exe_path = env.os.for_native("install/bin/python3", "install/python.exe").to_owned();
+    let mut exe_path = env
+        .os
+        .for_native("install/bin/python3", "install/python.exe")
+        .to_owned();
 
     // Manifest is only available for pre-builts
     let manifest_path = input.context.tool_dir.join("PYTHON.json");
@@ -142,7 +144,10 @@ pub fn locate_executables(
     }
 
     Ok(Json(LocateExecutablesOutput {
-        globals_lookup_dirs: vec![env.os.for_native("$TOOL_DIR/install/bin", "$TOOL_DIR/install/Scripts").into()],
+        globals_lookup_dirs: vec![env
+            .os
+            .for_native("$TOOL_DIR/install/bin", "$TOOL_DIR/install/Scripts")
+            .into()],
         primary: Some(ExecutableConfig::new(exe_path)),
         secondary: HashMap::from_iter([
             // pip
@@ -183,7 +188,10 @@ pub fn uninstall_global(
 #[plugin_fn]
 pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBinsOutput>> {
     let env = get_proto_environment()?;
-    let mut bin_path = env.os.for_native("install/bin/python3", "install/python.exe").to_owned();
+    let mut bin_path = env
+        .os
+        .for_native("install/bin/python3", "install/python.exe")
+        .to_owned();
 
     // Manifest is only available for pre-builts
     let manifest_path = input.context.tool_dir.join("PYTHON.json");
@@ -197,7 +205,10 @@ pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBi
     Ok(Json(LocateBinsOutput {
         bin_path: Some(bin_path.into()),
         fallback_last_globals_dir: true,
-        globals_lookup_dirs: vec![env.os.for_native("$TOOL_DIR/install/bin", "$TOOL_DIR/install/Scripts").into()],
+        globals_lookup_dirs: vec![env
+            .os
+            .for_native("$TOOL_DIR/install/bin", "$TOOL_DIR/install/Scripts")
+            .into()],
         ..LocateBinsOutput::default()
     }))
 }
