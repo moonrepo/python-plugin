@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.0
+
+#### 💥 Breaking
+
+- Removed `--user` from global package installation via `proto install-global`. Packages are now installed into the tool directory for the current Python version: `.proto/tools/python/3.12.0/install/bin`.
+
+#### ⚙️ Internal
+
+- Updated dependencies.
+
 ## 0.2.0
 
 #### 🚀 Updates
