@@ -8,6 +8,7 @@ on:
     tags:
       - "v[0-9]+*"
   pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,6 +21,9 @@ jobs:
           cache: false
           targets: wasm32-wasi
       - uses: moonrepo/build-proto-plugin@v0
+      - uses: actions/upload-artifact@v3
+        with:
+          path: builds
       - if: ${{ github.event_name == 'push' && github.ref_type == 'tag' }}
         uses: ncipollo/release-action@v1
         with:
