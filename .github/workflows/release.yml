@@ -23,11 +23,11 @@ jobs:
         with:
           artifacts: builds/*
           artifactErrorsFailBuild: true
+          tag: github.ref_name
           prerelease: >
-            ${{ github.event_name != 'push'
+            github.event_name != 'push'
             || github.ref_type != 'tag'
             || contains(github.ref_name, '-alpha')
             || contains(github.ref_name, '-beta')
             || contains(github.ref_name, '-rc')
-            }}
           updateOnlyUnreleased: true
