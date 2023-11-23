@@ -5,9 +5,8 @@ permissions:
 
 on:
   push:
-    tags:
-      - "v[0-9]+*"
   pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -20,10 +19,18 @@ jobs:
           cache: false
           targets: wasm32-wasi
       - uses: moonrepo/build-proto-plugin@v0
-      - if: ${{ github.event_name == 'push' && github.ref_type == 'tag' }}
-        uses: ncipollo/release-action@v1
+      - uses: ncipollo/release-action@v1
         with:
           artifacts: builds/*
           artifactErrorsFailBuild: true
-          prerelease: ${{ contains(github.ref_name, '-alpha') || contains(github.ref_name, '-beta') || contains(github.ref_name, '-rc') }}
-          skipIfReleaseExists: true
+          name: ${{ github.ref_name }}
+          tag: autorelease/${{ github.ref }}
+          prerelease: >
+            ${{ github.event_name != 'push'
+            || github.ref_type != 'tag'
+            || contains(github.ref_name, '-alpha')
+            || contains(github.ref_name, '-beta')
+            || contains(github.ref_name, '-rc')
+            }}
+          allowUpdates: true
+          updateOnlyUnreleased: true
