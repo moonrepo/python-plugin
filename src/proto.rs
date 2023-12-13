@@ -109,7 +109,7 @@ pub fn download_prebuilt(
     };
 
     let Some(release_triples) = release_triples else {
-        return err!("No pre-built available for version {}!", version);
+        return err!("No pre-built available for version {} (via https://github.com/indygreg/python-build-standalone)!\nTry installing another version for the time being.", version);
     };
 
     let triple = get_target_triple(&env, NAME)?;
