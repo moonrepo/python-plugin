@@ -5,6 +5,7 @@
 #### 🚀 Updates
 
 - Updated to support proto v0.26 release.
+- Improved error messages when a pre-built is not available.
 
 #### ⚙️ Internal
 
