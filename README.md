@@ -1,4 +1,4 @@
-# Python plugin
+# Python plugin (experimental)
 
 [Python](https://www.python.org/) WASM plugin for [proto](https://github.com/moonrepo/proto).
 

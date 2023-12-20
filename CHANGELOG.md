@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.0
+
+#### 🚀 Updates
+
+- Updated to support proto v0.26 release.
+- Improved error messages when a pre-built is not available.
+
+#### ⚙️ Internal
+
+- Updated dependencies.
+
 ## 0.4.0
 
 #### 🚀 Updates
