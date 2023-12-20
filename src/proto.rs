@@ -155,7 +155,7 @@ pub fn locate_executables(
                 "pip".into(),
                 ExecutableConfig {
                     no_bin: true,
-                    shim_before_args: Some("-m pip".into()),
+                    shim_before_args: Some(StringOrVec::String("-m pip".into())),
                     ..ExecutableConfig::default()
                 },
             ),
