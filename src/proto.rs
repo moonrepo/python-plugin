@@ -48,8 +48,13 @@ pub fn load_versions(Json(_): Json<LoadVersionsInput>) -> FnResult<Json<LoadVers
 
     let tags = tags
         .into_iter()
-        .filter(|t| t != "legacy-trunk")
-        .filter_map(|t| from_python_version(t, &regex))
+        .filter_map(|tag| {
+            if tag == "legacy-trunk" {
+                None
+            } else {
+                from_python_version(tag, &regex)
+            }
+        })
         .collect::<Vec<_>>();
 
     Ok(Json(LoadVersionsOutput::from(tags)?))
@@ -180,47 +185,4 @@ pub fn uninstall_global(
     let result = exec_command!(inherit, "pip", ["uninstall", "--yes", &input.dependency]);
 
     Ok(Json(UninstallGlobalOutput::from_exec_command(result)))
-}
-
-// DEPRECATED
-// Removed in v0.23!
-
-#[plugin_fn]
-pub fn locate_bins(Json(input): Json<LocateBinsInput>) -> FnResult<Json<LocateBinsOutput>> {
-    let env = get_proto_environment()?;
-    let mut bin_path = env
-        .os
-        .for_native("install/bin/python3", "install/python.exe")
-        .to_owned();
-
-    // Manifest is only available for pre-builts
-    let manifest_path = input.context.tool_dir.join("PYTHON.json");
-
-    if manifest_path.exists() {
-        let manifest: PythonManifest = json::from_slice(&fs::read(manifest_path)?)?;
-
-        bin_path = manifest.python_exe;
-    }
-
-    Ok(Json(LocateBinsOutput {
-        bin_path: Some(bin_path.into()),
-        fallback_last_globals_dir: true,
-        globals_lookup_dirs: vec![env
-            .os
-            .for_native("$TOOL_DIR/install/bin", "$TOOL_DIR/install/Scripts")
-            .into()],
-        ..LocateBinsOutput::default()
-    }))
-}
-
-#[plugin_fn]
-pub fn create_shims(Json(_): Json<CreateShimsInput>) -> FnResult<Json<CreateShimsOutput>> {
-    let mut global_shims = HashMap::new();
-
-    global_shims.insert("pip".into(), ShimConfig::global_with_sub_command("-m pip"));
-
-    Ok(Json(CreateShimsOutput {
-        global_shims,
-        ..CreateShimsOutput::default()
-    }))
 }
