@@ -8,6 +8,7 @@
 
 #### 🚀 Updates
 
+- Added support for Python 3.12 pre-builts.
 - Updated to support proto v0.28 release.
 - Updated to extism-pdk v1.
 
