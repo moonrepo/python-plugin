@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.0
+
+#### 🚀 Updates
+
+- Updated to support proto v0.29 release.
+
 ## 0.6.0
 
 #### 💥 Breaking

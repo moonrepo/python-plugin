@@ -65,7 +65,7 @@ pub fn load_versions(Json(_): Json<LoadVersionsInput>) -> FnResult<Json<LoadVers
 //     Json(input): Json<NativeInstallInput>,
 // ) -> FnResult<Json<NativeInstallOutput>> {
 //     let mut output = NativeInstallOutput::default();
-//     let env = get_proto_environment()?;
+//     let env = get_host_environment()?;
 
 //     // https://github.com/pyenv/pyenv/tree/master/plugins/python-build
 //     if command_exists(&env, "python-build") {
@@ -98,11 +98,13 @@ struct ReleaseEntry {
 pub fn download_prebuilt(
     Json(input): Json<DownloadPrebuiltInput>,
 ) -> FnResult<Json<DownloadPrebuiltOutput>> {
-    let env = get_proto_environment()?;
+    let env = get_host_environment()?;
     let version = &input.context.version;
 
     if version.is_canary() {
-        return err!(PluginError::UnsupportedCanary { tool: NAME.into() }.into());
+        return Err(plugin_err!(PluginError::UnsupportedCanary {
+            tool: NAME.into()
+        }));
     }
 
     let releases: BTreeMap<Version, BTreeMap<String, ReleaseEntry>> =
@@ -114,13 +116,19 @@ pub fn download_prebuilt(
     };
 
     let Some(release_triples) = release_triples else {
-        return err!("No pre-built available for version {} (via https://github.com/indygreg/python-build-standalone)!\nTry installing another version for the time being.", version);
+        return Err(plugin_err!(
+            "No pre-built available for version <hash>{}</hash> (via <url>https://github.com/indygreg/python-build-standalone</url>)! Try installing another version for the time being.",
+            version
+        ));
     };
 
     let triple = get_target_triple(&env, NAME)?;
 
     let Some(release) = release_triples.get(&triple) else {
-        return err!("No pre-built available for architecture {}!", triple);
+        return Err(plugin_err!(
+            "No pre-built available for architecture <id>{}</id>!",
+            triple
+        ));
     };
 
     Ok(Json(DownloadPrebuiltOutput {
@@ -135,7 +143,7 @@ pub fn download_prebuilt(
 pub fn locate_executables(
     Json(input): Json<LocateExecutablesInput>,
 ) -> FnResult<Json<LocateExecutablesOutput>> {
-    let env = get_proto_environment()?;
+    let env = get_host_environment()?;
     let mut exe_path = env
         .os
         .for_native("install/bin/python3", "install/python.exe")
