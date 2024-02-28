@@ -2117,7 +2117,7 @@ dependencies = [
 
 [[package]]
 name = "python_plugin"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
  "extism-pdk",
  "proto_pdk",
