@@ -2,6 +2,11 @@
 
 ## 0.8.0
 
+#### 💥 Breaking
+
+- Removed `install_global`, use `pip install` instead.
+- Removed `uninstall_global`, use `pip uninstall` instead.
+
 #### 🚀 Updates
 
 - Updated to support proto v0.31 release.
