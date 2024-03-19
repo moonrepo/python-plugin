@@ -1,5 +1,4 @@
 use proto_pdk_test_utils::*;
-use starbase_sandbox::create_empty_sandbox;
 
 generate_resolve_versions_tests!("python-test", {
     "2.3" => "2.3.7",
@@ -10,8 +9,8 @@ generate_resolve_versions_tests!("python-test", {
 
 #[test]
 fn loads_versions_from_git() {
-    let sandbox = create_empty_sandbox();
-    let plugin = create_plugin("python-test", sandbox.path());
+    let sandbox = create_empty_proto_sandbox();
+    let plugin = sandbox.create_plugin("python-test");
 
     let output = plugin.load_versions(LoadVersionsInput::default());
 
@@ -20,8 +19,8 @@ fn loads_versions_from_git() {
 
 #[test]
 fn sets_latest_alias() {
-    let sandbox = create_empty_sandbox();
-    let plugin = create_plugin("python-test", sandbox.path());
+    let sandbox = create_empty_proto_sandbox();
+    let plugin = sandbox.create_plugin("python-test");
 
     let output = plugin.load_versions(LoadVersionsInput::default());
 
