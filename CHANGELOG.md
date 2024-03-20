@@ -1,9 +1,10 @@
 # Changelog
 
-## 0.8.1
+## 0.9.0
 
 #### 🚀 Updates
 
+- Will now create a secondary executable that includes the major version in the file name, for example, `python3`.
 - Updated to support proto v0.32 release.
 
 ## 0.8.0
