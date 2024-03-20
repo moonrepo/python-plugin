@@ -10,5 +10,9 @@ expression: "std::fs::read_to_string(sandbox.path().join(\".proto/shims/registry
       "pip"
     ]
   },
-  "python-test": {}
+  "python-test": {},
+  "python-test3": {
+    "alt_bin": true,
+    "parent": "python-test"
+  }
 }

@@ -17,7 +17,7 @@ static NAME: &str = "Python";
 #[derive(Deserialize)]
 struct PythonManifest {
     python_exe: String,
-    // python_major_minor_version: String,
+    python_major_minor_version: String,
 }
 
 #[plugin_fn]
@@ -144,17 +144,53 @@ pub fn locate_executables(
     Json(input): Json<LocateExecutablesInput>,
 ) -> FnResult<Json<LocateExecutablesOutput>> {
     let env = get_host_environment()?;
-    let mut exe_path = env
-        .os
-        .for_native("install/bin/python3", "install/python.exe")
-        .to_owned();
+    let id = get_plugin_id()?;
+    let exe_path;
+    let mut major_version = "3".to_owned();
+    let mut secondary = HashMap::from_iter([
+        // pip
+        (
+            "pip".into(),
+            ExecutableConfig {
+                no_bin: true,
+                shim_before_args: Some(StringOrVec::Vec(vec!["-m".into(), "pip".into()])),
+                ..ExecutableConfig::default()
+            },
+        ),
+    ]);
 
     // Manifest is only available for pre-builts
     let manifest_path = input.context.tool_dir.join("PYTHON.json");
 
     if manifest_path.exists() {
-        exe_path = json::from_slice::<PythonManifest>(&fs::read(manifest_path)?)?.python_exe;
+        let manifest: PythonManifest = json::from_slice(&fs::read(manifest_path)?)?;
+
+        exe_path = manifest.python_exe;
+
+        if let Some(i) = manifest.python_major_minor_version.find('.') {
+            major_version = manifest.python_major_minor_version[0..i].to_string();
+        }
     }
+    // Otherwise this was built from source
+    else {
+        if let VersionSpec::Version(version) = input.context.version {
+            major_version = version.major.to_string();
+        };
+
+        exe_path = env
+            .os
+            .for_native(
+                format!("install/bin/python{major_version}").as_str(),
+                "install/python.exe",
+            )
+            .to_owned();
+    }
+
+    // Create a secondary executable that includes the major version as a suffix
+    secondary.insert(
+        format!("{id}{major_version}"),
+        ExecutableConfig::new(&exe_path),
+    );
 
     Ok(Json(LocateExecutablesOutput {
         globals_lookup_dirs: vec![env
@@ -162,17 +198,7 @@ pub fn locate_executables(
             .for_native("$TOOL_DIR/install/bin", "$TOOL_DIR/install/Scripts")
             .into()],
         primary: Some(ExecutableConfig::new(exe_path)),
-        secondary: HashMap::from_iter([
-            // pip
-            (
-                "pip".into(),
-                ExecutableConfig {
-                    no_bin: true,
-                    shim_before_args: Some(StringOrVec::String("-m pip".into())),
-                    ..ExecutableConfig::default()
-                },
-            ),
-        ]),
+        secondary,
         ..LocateExecutablesOutput::default()
     }))
 }
