@@ -21,6 +21,7 @@ function mapTriple(triple) {
     case "aarch64-unknown-linux-gnu":
       return "aarch64-unknown-linux-gnu";
 
+    case "i686-pc-windows-msvc":
     case "i686-pc-windows-msvc-shared":
     case "i686-pc-windows-msvc-static":
       return "i686-pc-windows-msvc";
