@@ -39,6 +39,7 @@ function mapTriple(triple) {
     case "windows-x86":
     case "windows-x86-shared":
     case "windows-x86-static":
+    case "x86_64-pc-windows-msvc":
     case "x86_64-pc-windows-msvc-shared":
     case "x86_64-pc-windows-msvc-static":
       return "x86_64-pc-windows-msvc";
@@ -62,6 +63,12 @@ function mapTriple(triple) {
 
     case "s390x-unknown-linux-gnu":
       return "s390x-unknown-linux-gnu";
+
+    case "armv7-unknown-linux-gnueabi":
+      return "armv7-unknown-linux-gnueabi";
+
+    case "armv7-unknown-linux-gnueabihf":
+      return "armv7-unknown-linux-gnueabihf";
 
     default:
       throw new Error(`Unknown triple ${triple}`);
