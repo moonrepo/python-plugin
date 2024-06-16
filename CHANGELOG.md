@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.2
+
+#### 🚀 Updates
+
+- Will now create a pip shim that includes the major version, for example, `pip3`.
+
 ## 0.10.1
 
 #### 🚀 Updates
