@@ -180,6 +180,7 @@ pub fn locate_executables(
     }
 
     // Create a secondary executable that includes the major version as a suffix
+    // https://gregoryszorc.com/docs/python-build-standalone/main/quirks.html#no-pip-exe-on-windows
     let secondary = HashMap::from_iter([
         // python3
         (
@@ -189,15 +190,20 @@ pub fn locate_executables(
         // pip
         (
             format!("pip"),
-            ExecutableConfig::new(env.os.get_file_name(format!("{scripts_dir}/pip"), "exe")),
+            ExecutableConfig {
+                no_bin: true,
+                shim_before_args: Some(StringOrVec::Vec(vec!["-m".into(), "pip".into()])),
+                ..ExecutableConfig::default()
+            },
         ),
         // pip3
         (
             format!("pip{major_version}"),
-            ExecutableConfig::new(
-                env.os
-                    .get_file_name(format!("{scripts_dir}/pip{major_version}"), "exe"),
-            ),
+            ExecutableConfig {
+                no_bin: true,
+                shim_before_args: Some(StringOrVec::Vec(vec!["-m".into(), "pip".into()])),
+                ..ExecutableConfig::default()
+            },
         ),
     ]);
 
