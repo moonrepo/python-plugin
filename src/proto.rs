@@ -18,6 +18,7 @@ static NAME: &str = "Python";
 struct PythonManifest {
     python_exe: String,
     python_major_minor_version: String,
+    python_paths: HashMap<String, String>,
 }
 
 #[plugin_fn]
@@ -145,19 +146,15 @@ pub fn locate_executables(
 ) -> FnResult<Json<LocateExecutablesOutput>> {
     let env = get_host_environment()?;
     let id = get_plugin_id()?;
-    let exe_path;
+    let mut exe_path = env
+        .os
+        .for_native("install/bin/python", "install/python.exe")
+        .to_owned();
+    let mut scripts_dir = env
+        .os
+        .for_native("install/bin", "install/Scripts")
+        .to_owned();
     let mut major_version = "3".to_owned();
-    let mut secondary = HashMap::from_iter([
-        // pip
-        (
-            "pip".into(),
-            ExecutableConfig {
-                no_bin: true,
-                shim_before_args: Some(StringOrVec::Vec(vec!["-m".into(), "pip".into()])),
-                ..ExecutableConfig::default()
-            },
-        ),
-    ]);
 
     // Manifest is only available for pre-builts
     let manifest_path = input.context.tool_dir.join("PYTHON.json");
@@ -167,8 +164,12 @@ pub fn locate_executables(
 
         exe_path = manifest.python_exe;
 
-        if let Some(i) = manifest.python_major_minor_version.find('.') {
-            major_version = manifest.python_major_minor_version[0..i].to_string();
+        if let Some(dir) = manifest.python_paths.get("scripts") {
+            scripts_dir = dir.to_owned();
+        }
+
+        if let Some(index) = manifest.python_major_minor_version.find('.') {
+            major_version = manifest.python_major_minor_version[0..index].to_string();
         }
     }
     // Otherwise this was built from source
@@ -176,27 +177,32 @@ pub fn locate_executables(
         if let VersionSpec::Version(version) = input.context.version {
             major_version = version.major.to_string();
         };
-
-        exe_path = env
-            .os
-            .for_native(
-                format!("install/bin/python{major_version}").as_str(),
-                "install/python.exe",
-            )
-            .to_owned();
     }
 
     // Create a secondary executable that includes the major version as a suffix
-    secondary.insert(
-        format!("{id}{major_version}"),
-        ExecutableConfig::new(&exe_path),
-    );
+    let secondary = HashMap::from_iter([
+        // python3
+        (
+            format!("{id}{major_version}"),
+            ExecutableConfig::new(&exe_path),
+        ),
+        // pip
+        (
+            format!("pip"),
+            ExecutableConfig::new(env.os.get_file_name(format!("{scripts_dir}/pip"), "exe")),
+        ),
+        // pip3
+        (
+            format!("pip{major_version}"),
+            ExecutableConfig::new(
+                env.os
+                    .get_file_name(format!("{scripts_dir}/pip{major_version}"), "exe"),
+            ),
+        ),
+    ]);
 
     Ok(Json(LocateExecutablesOutput {
-        globals_lookup_dirs: vec![env
-            .os
-            .for_native("$TOOL_DIR/install/bin", "$TOOL_DIR/install/Scripts")
-            .into()],
+        globals_lookup_dirs: vec![format!("$TOOL_DIR/{scripts_dir}")],
         primary: Some(ExecutableConfig::new(exe_path)),
         secondary,
         ..LocateExecutablesOutput::default()
