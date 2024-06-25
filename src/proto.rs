@@ -111,12 +111,7 @@ pub fn download_prebuilt(
     let releases: BTreeMap<Version, BTreeMap<String, ReleaseEntry>> =
         fetch_url("https://raw.githubusercontent.com/moonrepo/python-plugin/master/releases.json")?;
 
-    let release_triples = match version {
-        VersionSpec::Version(v) => releases.get(v),
-        _ => None,
-    };
-
-    let Some(release_triples) = release_triples else {
+    let Some(release_triples) = version.as_version().and_then(|v| releases.get(v)) else {
         return Err(plugin_err!(
             "No pre-built available for version <hash>{}</hash> (via <url>https://github.com/indygreg/python-build-standalone</url>)! Try installing another version for the time being.",
             version
@@ -174,7 +169,7 @@ pub fn locate_executables(
     }
     // Otherwise this was built from source
     else {
-        if let VersionSpec::Version(version) = input.context.version {
+        if let Some(version) = input.context.version.as_version() {
             major_version = version.major.to_string();
         };
     }
