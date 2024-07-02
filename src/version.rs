@@ -3,9 +3,7 @@
 use regex::Regex;
 
 pub fn from_python_version(version: String, regex: &Regex) -> Option<String> {
-    let Some(caps) = regex.captures(&version) else {
-        return None;
-    };
+    let caps = regex.captures(&version)?;
 
     let mut version = format!(
         "{}.{}.{}",

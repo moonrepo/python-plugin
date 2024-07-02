@@ -145,7 +145,7 @@ pub fn locate_executables(
         .os
         .for_native("install/bin/python", "install/python.exe")
         .to_owned();
-    let mut scripts_dir = env
+    let mut exes_dir = env
         .os
         .for_native("install/bin", "install/Scripts")
         .to_owned();
@@ -160,7 +160,7 @@ pub fn locate_executables(
         exe_path = manifest.python_exe;
 
         if let Some(dir) = manifest.python_paths.get("scripts") {
-            scripts_dir = dir.to_owned();
+            dir.clone_into(&mut exes_dir);
         }
 
         if let Some(index) = manifest.python_major_minor_version.find('.') {
@@ -168,10 +168,8 @@ pub fn locate_executables(
         }
     }
     // Otherwise this was built from source
-    else {
-        if let Some(version) = input.context.version.as_version() {
-            major_version = version.major.to_string();
-        };
+    else if let Some(version) = input.context.version.as_version() {
+        major_version = version.major.to_string();
     }
 
     // Create a secondary executable that includes the major version as a suffix
@@ -184,7 +182,7 @@ pub fn locate_executables(
         ),
         // pip
         (
-            format!("pip"),
+            "pip".into(),
             ExecutableConfig {
                 no_bin: true,
                 shim_before_args: Some(StringOrVec::Vec(vec!["-m".into(), "pip".into()])),
@@ -203,7 +201,8 @@ pub fn locate_executables(
     ]);
 
     Ok(Json(LocateExecutablesOutput {
-        globals_lookup_dirs: vec![format!("$TOOL_DIR/{scripts_dir}")],
+        globals_lookup_dirs: vec![format!("$TOOL_DIR/{exes_dir}")],
+        exes_dir: Some(exes_dir.into()),
         primary: Some(ExecutableConfig::new(exe_path)),
         secondary,
         ..LocateExecutablesOutput::default()
