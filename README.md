@@ -1,3 +1,5 @@
+> # Migrated to a new repository: https://github.com/moonrepo/tools
+
 # Python plugin (experimental)
 
 [Python](https://www.python.org/) WASM plugin for [proto](https://github.com/moonrepo/proto).
